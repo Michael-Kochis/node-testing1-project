@@ -8,6 +8,8 @@
  */
 function trimProperties(obj) {
   // ✨ implement
+  Object.keys(obj).map(k => obj[k] = obj[k].trim());
+  return obj;
 }
 
 /**
@@ -20,6 +22,7 @@ function trimProperties(obj) {
  */
 function trimPropertiesMutation(obj) {
   // ✨ implement
+  obj = Object.keys(obj).map(k => obj[k] = obj[k].trim());
 }
 
 /**
@@ -32,6 +35,11 @@ function trimPropertiesMutation(obj) {
  */
 function findLargestInteger(integers) {
   // ✨ implement
+  let returnThis = integers[0];
+  for(let i = 0; i < integers.length; i++) {
+    if (integers[i] > returnThis) returnThis = integers[i];
+  }
+  return returnThis;
 }
 
 class Counter {
@@ -41,6 +49,7 @@ class Counter {
    */
   constructor(initialNumber) {
     // ✨ initialize whatever properties are needed
+    this.value = initialNumber;
   }
 
   /**
@@ -57,8 +66,20 @@ class Counter {
    */
   countDown() {
     // ✨ implement
+    if (this.value === 0) {
+      return this.value;
+    } else {
+      return this.value--;
+    }
   }
 }
+
+const SEASONS = [
+  "spring",
+  "summer",
+  "fall",
+  "winter"
+]
 
 class Seasons {
   /**
@@ -66,6 +87,8 @@ class Seasons {
    */
   constructor() {
     // ✨ initialize whatever properties are needed
+    this.index = 0;
+    this.season = SEASONS[this.index];
   }
 
   /**
@@ -82,6 +105,9 @@ class Seasons {
    */
   next() {
     // ✨ implement
+    this.index = (++this.index)%4;
+    this.season = SEASONS[this.index];
+    return this.season;
   }
 }
 
@@ -96,6 +122,8 @@ class Car {
     this.odometer = 0 // car initilizes with zero miles
     this.tank = tankSize // car initiazes full of gas
     // ✨ initialize whatever other properties are needed
+    this.milesPerGallon = mpg;
+    this.maxTank = tankSize;
   }
 
   /**
@@ -113,6 +141,9 @@ class Car {
    */
   drive(distance) {
     // ✨ implement
+    this.odometer += distance;
+    this.tank -= (distance/this.milesPerGallon);
+    return this.odometer;
   }
 
   /**
@@ -128,6 +159,8 @@ class Car {
    */
   refuel(gallons) {
     // ✨ implement
+    this.tank += gallons;
+    if (this.tank > this.maxTank) this.tank = this.maxTank;
   }
 }
 
@@ -146,6 +179,7 @@ class Car {
  */
 function isEvenNumberAsync(number) {
   // ✨ implement
+  return !(number%2);
 }
 
 module.exports = {
