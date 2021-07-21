@@ -170,7 +170,14 @@ describe('[Exercise 6] Car', () => {
     expect(actual).toBeLessThan(start);
   })
   test('[16B] the car runs out of gas and will no longer drive', () => {
+    const newMiles = 1000;
+    
+    focus.drive(newMiles);
+    const first = focus.odometer;
+    focus.drive(newMiles);
+    const actual = focus.odometer;
 
+    expect(actual).toBe(first);
   })
   test('[17] refueling allows to keep driving', () => {
     const newMiles = 1000;

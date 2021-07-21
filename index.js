@@ -141,6 +141,8 @@ class Car {
    */
   drive(distance) {
     // ✨ implement
+    const maxDistance = this.tank * this.milesPerGallon;
+    if (distance > maxDistance) distance = maxDistance;
     this.odometer += distance;
     this.tank -= (distance/this.milesPerGallon);
     return this.odometer;
